@@ -9,17 +9,22 @@ class Chats extends StatefulWidget {
 
 class _ChatsState extends State<Chats> {
   String current_page = "Chats"; // default page
-
+  final PageController controller = PageController();
   Widget buildPage(String pageName) {
     return Expanded(
       child: Column(
           children: [
 
-          Container(
+          SizedBox(
             width: double.infinity,
             child:TextButton(
               onPressed: () {
                 current_page=pageName;
+                controller.animateToPage(
+                  _getPageNumber(pageName),
+                  duration:const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
                 setState(() {});
               },
               child:Text(pageName,style:  const TextStyle(fontSize: 19, color: Colors.white),),
@@ -27,7 +32,7 @@ class _ChatsState extends State<Chats> {
           ),
 
             ColoredBox(
-              color: current_page == pageName ? Colors.white : Color(0xFF25D366),
+              color: current_page == pageName ? Colors.white :const  Color(0xFF25D366),
               child: const SizedBox(width: double.infinity, height: 5),
             ),
           ],
@@ -73,11 +78,61 @@ class _ChatsState extends State<Chats> {
                     buildPage("Calls"),
                   ],
                 ),
+
               ],
             ),
           ),
+          Expanded(child:
+          PageView(
+            controller: controller,
+            onPageChanged: (int index) {
+              // Update current_page when the page changes
+              setState(() {
+                switch (index) {
+                  case 0:
+                    current_page = "Chats";
+                    break;
+                  case 1:
+                    current_page = "Status";
+                    break;
+                  case 2:
+                    current_page = "Calls";
+                    break;
+                }
+              });
+            },
+            children: const <Widget>[
+              Center(
+                child: Text('Chats'),
+              ),
+              Center(
+                
+                child: Text("status"),
+              ),
+              Center(
+                child: Text('Third Page'),
+              ),
+            ],
+          ),
+          )
+
+
+
         ],
       ),
     );
+  }
+}
+
+int _getPageNumber(String pageName) {
+  switch (pageName) {
+    case "Chats":
+      return 0;
+    case "Status":
+      return 1;
+    case "Calls":
+      return 2;
+    default:
+      return 0;
   }
 }
