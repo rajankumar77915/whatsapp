@@ -12,24 +12,25 @@ class _ChatsState extends State<Chats> {
 
   Widget buildPage(String pageName) {
     return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            current_page = pageName;
-          });
-        },
-        child: Column(
+      child: Column(
           children: [
-            Text(
-              pageName,
-              style:  const TextStyle(fontSize: 19, color: Colors.white),
+
+          Container(
+            width: double.infinity,
+            child:TextButton(
+              onPressed: () {
+                current_page=pageName;
+                setState(() {});
+              },
+              child:Text(pageName,style:  const TextStyle(fontSize: 19, color: Colors.white),),
             ),
+          ),
+
             ColoredBox(
               color: current_page == pageName ? Colors.white : Color(0xFF25D366),
               child: const SizedBox(width: double.infinity, height: 5),
             ),
           ],
-        ),
       ),
     );
   }
