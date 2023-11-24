@@ -10,7 +10,7 @@ class Message {
   DateTime sentDateTime;
   DateTime receiveDateTime;
   bool read;
-  List<String> ?status;
+  String ?status;//["sentding"(watch)  , "sent"(one-tick) ,  "read"(blue-tick)]
 
   Message({
      this.message,
@@ -36,7 +36,7 @@ class Message {
       sentDateTime: (json['sentDateTime'] as Timestamp).toDate(),
       receiveDateTime: DateTime.parse(json['receiveDateTime']),
       read: json['read'],
-      status: List<String>.from(json['status']),
+      status: json['status'],
     );
   }
 
