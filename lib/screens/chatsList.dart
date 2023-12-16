@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:whatsapp/screens/inChat.dart';
 import 'package:whatsapp/services/chatsService.dart';
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
@@ -55,7 +56,7 @@ class _ChatListState extends State<ChatList> {
       children: [
      Expanded(
         child:StreamBuilder<List<String>?>(
-          stream: chatS.getFriendsForUser("+918141017088"),
+          stream: chatS.getFriendsForUser("+918141"),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
@@ -68,6 +69,7 @@ class _ChatListState extends State<ChatList> {
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
                   String? contact_detail=messages[index];
+                  String? phone=messages[index];
                   for (var element in contacts) {
                     if (element.phones!.isNotEmpty && element.phones!.first!.value!.startsWith(messages[index])) {
                       // Phone number starts with '929387373'
@@ -82,13 +84,13 @@ class _ChatListState extends State<ChatList> {
                     // }
                   }
                   // Customize how each message is displayed
-                  return Card(
+                  return ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>InChat(contact_detail: contact_detail,phone:phone,))), child:Card(
                     child: ListTile(
                       leading: CircleAvatar(backgroundImage:NetworkImage("https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/y/j/s/small-baby-krishna-poster-for-pregnant-woman-300-gsm-12x18-original-imags29rkcfezh7w.jpeg?q=90")),
                       title: Text("${contact_detail}" ),
                       subtitle: Text('Here is a second line',style: TextStyle(color: Colors.white),),
                     ),
-                  );
+                  ), );
                 },
               );
             }

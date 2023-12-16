@@ -34,7 +34,7 @@ class ChatsService{
       firstName: 'John',
       lastName: 'Doe',
       mobile: '+918141017088',
-      friends: ['+9876543210', '+917567282873'], // Add mobile numbers of friends
+      friends: ['+9876543210', '+917567',"+9181410"], // Add mobile numbers of friends
       calls: ['+9876543210'], // Add mobile numbers of calls
       description: 'This is a dummy user.',
     );
