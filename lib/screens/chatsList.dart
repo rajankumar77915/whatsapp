@@ -4,7 +4,6 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:whatsapp/screens/inChat.dart';
 import 'package:whatsapp/services/chatsService.dart';
-
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
 
