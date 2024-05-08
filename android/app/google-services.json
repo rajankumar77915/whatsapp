@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50711093294",
+    "project_id": "cool-whatsapp-7721",
+    "storage_bucket": "cool-whatsapp-7721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50711093294:android:6a1b88a6bc8385428fffbf",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs_RjxRiUHgQ8MqVrzj6sHmATeRKJ3EBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
